@@ -3,9 +3,15 @@
 
 \title{COLLEGE OF COMPUTING AND INFORMATION SCIENCES\\ DEPARTMENT OF COMPUTER SCIENCE\\ SCHOOL OF COMPUTING AND INFORMATICS TECHNOLOGY\\}
 \maketitle
-\title{NAME:	     OKIRING PAUL MWESIGYE MICHAEL\\
-STUDENTS NUMBER:	 214016765  214019414\\
-REGISTRATION NUMBER: 14/U/13973/EVE 14/U/10401/EVE}
+
+\title{NAME:	         OKIRING PAUL \space-214016765  - 14/U/13973/EVE   \\  NAME:     MWESIGYE MICHAEL -214019414 - 14/U/10401/EVE   \\  NAME:  OKELLO JOHN PAU\space-215005517\space - 15/U/11991/EVE\\ NAME:   WANGIRA JOHN\space- 214017326 \space -14/U/15832/EVE
+\maketitle
+\\
+\\
+\begin{center}
+\title {\textbf{CONCEPT PAPER-GROUP202}}
+\end{center}
+\title{\textbf{BRANCHING TEMPORAL LOGICS,AUTOMATA AND GAMES}}
 \maketitle
 
 \section{INTRODUCTION}
@@ -16,6 +22,19 @@ Given a model of a system, exhaustively and automatically check whether this mod
 In order to solve such a problem algorithmically, both the model of the system and the specification are formulated in some precise mathematical language. To this end, the problem is formulated as a task in logic, namely to check whether a given structure satisfies a given logical formula. This general concept applies to many kinds of logics and suitable structures. A simple model checking problem is verifying whether a given formula in the propositional logic is satisfied by a given structure.
 
 \section{BACKGROUND}
+The satisfiability problem for branching-time temporal logics like CTL*, CTL and CTL+ has important applications in program specification and verification. Their computational complexities are known: CTL* and CTL+ are complete for doubly exponential time, CTL is complete for single exponential time. Some decision procedures for these logics are known; they use tree automata, tableaux or axiom systems.
+Automata-theoretic approaches. As much as the introduction of CTL* has led to an easy unification of CTL and LTL, it has also proved to be quite a difficulty in obtaining decision procedures for this logic. The first procedure by Emerson and Sistla was automata-theoretic [ES84] and roughly works as follows. A formula is translated into a doubly-exponentially large tree automaton whose states are Hintikka-like sets of sets of sub formulas of the input formula.
+This tree automaton recognizes a superset of the set of tree models of the input formula. It
+is lacking a mechanism that ensures that certain temporal operators are really interpreted
+as least fix points of certain monotone functions rather than arbitrary fix points.
+Other approaches. Apart from these automata-theoretic approaches, a few deferent ones
+have been presented as well. For instance, there is Reynolds' proof system for validity
+[Rey01]. Its completeness proof is rather intricate and relies on the presence of a rule which
+violates the sub formula property. In essence, this rule quantity over an arbitrary set of
+atomic propositions. Thus, while it is possible to check a given tree for whether or not it is
+a proof for a given formula, it is not clear how this system could be used in order to
+find proofs for given formulas.
+
 
 \section{MAIN OBJECTIVES}
  To show the connexions between the temporal logics CTL and / or CTL*, automata, and games.
@@ -28,8 +47,30 @@ In order to solve such a problem algorithmically, both the model of the system a
     \item Application of the model checker to higher-order model checking\\
   \end{enumerate}
 \section{Scope}
-\section{Descriptions}
+Our overall research is basically limited to the areas of Branching Temporary Logics, Automata and Games. The term Temporal Logic has been broadly used to cover all approaches to representation and reasoning about time and temporal information within a logical framework, and also more narrowly to refer specifically to the modal-logic type of approach introduced around 1960 by Arthur Prior under the name of Tense Logic and subsequently developed further by many logicians and computer scientists. Applications of Temporal Logic include its use as a formalism for clarifying philosophical issues about time, as a framework within which to define the semantics of temporal expressions in natural language, as a language for encoding temporal knowledge in artificial intelligence, and as a tool for specification, formal analysis, and verification of the executions of computer programs and systems.
+\section{Preliminaries}
+
+\subsection{The temporal logic CTL}
+We consider the standard branching-time temporal logic CTL. For technical reasons, we use the operator ˜ U as a dual of the until operator for which the stop condition is not required to occur; and we suppose w.l.o.g. that formulas are given in positive normal form, i.e., negations are applied only to atomic propositions. Indeed, each CTL formula can be written in positive normal form by pushing the negations inside.
+Deﬁnition 1. Let AP = {a,b,c,...} be a ﬁnite set of atomic propositions. The set of CTL formulas is given by (where a ∈ AP):
+ϕ ::= a | ¬a | ϕ∧ϕ | ϕ∨ϕ | AXϕ | EXϕ | A[ϕUϕ] | E[ϕUϕ] | A[ϕ ˜ Uϕ] | E[ϕ ˜ Uϕ].
+\subsection{Alternating B¨uchi PushDown Systems}
+ An Alternating Bu¨chi PushDown System (ABPDS for short) is a tuple BP = (P,Γ,∆, F), where P is a ﬁnite set of control locations, Γ is the stack alphabet, F ⊆ P is a ﬁnite set of accepting control locations and ∆ is a function that assigns to each element of P × Γ a positive boolean formula over P × Γ∗.
+\subsection{ PushDown Systems}
+A PushDown System (PDS for short) is a tuple P = (P,Γ,∆,]), where P is a ﬁnite set of control locations, Γ is the stack alphabet, ∆ ⊆ (P × Γ) × (P × Γ∗) is a ﬁnite set of transition rules and ] ∈ Γ is a bottom stack symbol.
+\subsection{Recursion Schemes}
+In higher-order model checking, recursion schemes are typi- cally used as simply-typed grammars for constructing possibly inﬁnite term-trees or ranked trees. Types are deﬁned by the grammar A ::= o | A → B. By convention, arrows associate to the right; thus every type can be written uniquely as A1 → ··· → An → o, for some n ≥ 0. We deﬁne the order of a type: ord(o) := o and ord(A → B) := max(ord(A) + 1,ord(B)). Intuitively the order of a type measures how deeply nested it is on the left of the arrow. 
+
 \section{Significances}
+Advantages of the game-based approach. The game-theoretic framework uniformly treats the standard branching-time logics from the relatively simple CTL to the relatively complex CTL.
+ It yields complexity-theoretic optimal results, i.e. satisfiability checking using this framework
+is possible in exponential time for CTL and doubly exponential time for CTL+.
+ Like the automata-theoretic approaches, it separates the characterization of satisfiability
+through a syntactic object (a parity game) from the test for satisfiability (the problem
+of solving the game). Thus, advances in the area of parity game solving carry over to
+satisfiability checking. Like the tableaux-based approach, it keeps a very close relationship between the input formula and the structure of the parity game thus enabling feedback from a (counter-)model or applications in specification and verification. Satisfiability checking procedures based on this framework are implemented in the
+MLSolver platform [FL10] which uses the high-performance parity game solver PG-Solver [FL09] as its algorithmic backbone.
+
 \section{Methodologies}
 The decision procedures for these logics are known;
 \paragraph{ The tree automatas}
@@ -58,4 +99,4 @@ http://dx.doi.org/10.1145/333979.333987 \\
 
 
 \end{list}
-	\end{document} 
+\end{document} 
